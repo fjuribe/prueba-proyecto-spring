@@ -1,5 +1,7 @@
 package com.springboot.ninja.controller;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,8 +14,11 @@ import com.springboot.ninja.model.UserCredential;
 @Controller
 public class LoginController {
 
+	private static final Log LOG=LogFactory.getLog(LoginController.class);
+	
 	@GetMapping("/")
 	public String redirectToLogin() {
+		LOG.info("METHOD:redirectToLogin()");
 		return "redirect:/login";
 	}
 	
@@ -22,17 +27,21 @@ public class LoginController {
 	public String showLoginFrom(Model model,
 			@RequestParam(name="error",defaultValue="",required=false) String error,
 	        @RequestParam(name="logout",required=false)String logout){
+		LOG.info("METHOD:showLoginFrom() -- PARAM:error="+error+"logaut:"+logout);
 		model.addAttribute("error",error);
 		model.addAttribute("logout",logout);
 		model.addAttribute("userCredentials",new UserCredential());
+		LOG.info("Returning to Login view");
 		return "login";
 	}
 	
 	@PostMapping("/logincheck")
 	public String loginCheck(@ModelAttribute(name="userCredentials") UserCredential userCredential) {
+		LOG.info("METHOD:loginCheck() -- PARAMS:"+userCredential.toString());
 		if(userCredential.getUsername().equals("user") && userCredential.getPassword().equals("user")) {
 			return "contacts";
 		}
+		LOG.info("Redirect to Login?error");
 		return "redirect:/login?error";
 	}
 	
