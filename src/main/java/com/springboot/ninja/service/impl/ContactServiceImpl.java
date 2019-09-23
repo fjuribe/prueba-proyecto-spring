@@ -30,7 +30,6 @@ public class ContactServiceImpl implements ContactService{
 		return contactConverter.convertContactModel2Contact(contact);
 	}
 
-
 	@Override
 	public List<ContactModel> ListAllcontacts() {
 		List<Contact> contacts=contactRepository.findAll();
@@ -40,6 +39,20 @@ public class ContactServiceImpl implements ContactService{
 		}
 
 		return contactsModel;
+	}
+
+	@Override
+	public Contact findContactById(int id) {
+		return contactRepository.findByid(id);
+
+	}
+
+	@Override
+	public void removeContact(int id) {
+		Contact contact=findContactById(id);
+		if(null!=contact) {
+			contactRepository.delete(contact);
+		}
 	}
 
 	
