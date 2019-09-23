@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-	<title>Backend Ninja - Add/modify Contact</title>
+	<title>Practica de formulario CRUD</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<link rel="stylesheet"
@@ -17,16 +17,17 @@
 
 	<div class="jumbotron">
 		<div class="container">
-			<h1>Contact Form</h1>
+			<h1>Formulario de contacto</h1>
 			<br/>
 			<form action="#" th:action="@{/contacts/addcontact}" th:object="${contactModel}" method="post">
-				First Name: <input type="text" class="form-control" th:field="*{firstname}"></input>
+			<input type="hidden" th:field="*{id}"/>
+				Nombre: <input type="text" class="form-control" th:field="*{firstname}" th:value="${firstname}"></input>
 				<br/>
-				Last Name: <input type="text" class="form-control" th:field="*{lastname}"></input>
+				Apellido: <input type="text" class="form-control" th:field="*{lastname}" th:value="${lastname}"></input>
 				<br/>
-				Telephone: <input type="text" class="form-control" th:field="*{telephon}"></input>
+				Telefono: <input type="text" class="form-control" th:field="*{telephon}" th:value="${telephon}"></input>
 				<br/>
-				City: <input type="text" class="form-control" th:field="*{city}"></input>
+				Ciudad: <input type="text" class="form-control" th:field="*{city}" th:value="${city}"></input>
 				<br/>
 				<br/>
 				<button class="btn btn-lg btn-primary btn-block" type="submit">
