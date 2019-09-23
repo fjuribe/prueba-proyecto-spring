@@ -38,7 +38,7 @@ public class LoginController {
 	public String loginCheck(@ModelAttribute(name="userCredentials") UserCredential userCredential) {
 		LOG.info("METHOD:loginCheck() -- PARAMS:"+userCredential.toString());
 		if(userCredential.getUsername().equals("user") && userCredential.getPassword().equals("user")) {
-			return ViewConstant.CONSTANTS;
+			return "redirect:/contacts/showcontacts";
 		}
 		LOG.info("Redirect to Login?error");
 		return "redirect:/login?error";

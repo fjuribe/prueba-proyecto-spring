@@ -1,5 +1,8 @@
 package com.springboot.ninja.service.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -25,6 +28,18 @@ public class ContactServiceImpl implements ContactService{
 	public ContactModel addcontact(ContactModel contactModel) {
 		Contact contact=contactRepository.save(contactConverter.convertContactModel2Contact(contactModel));
 		return contactConverter.convertContactModel2Contact(contact);
+	}
+
+
+	@Override
+	public List<ContactModel> ListAllcontacts() {
+		List<Contact> contacts=contactRepository.findAll();
+		List<ContactModel> contactsModel= new ArrayList<ContactModel>();
+		for(Contact contact:contacts) {
+			contactsModel.add(contactConverter.convertContactModel2Contact(contact));
+		}
+
+		return contactsModel;
 	}
 
 	
