@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.springboot.ninja.constant.ViewConstant;
-import com.springboot.ninja.entity.Contact;
+//import com.springboot.ninja.entity.Contact;
 import com.springboot.ninja.model.ContactModel;
 import com.springboot.ninja.service.ContactService;
 
