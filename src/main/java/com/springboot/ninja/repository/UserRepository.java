@@ -8,6 +8,6 @@ import com.springboot.ninja.entity.User;
 @Repository("userRepository")
 public interface UserRepository extends JpaRepository<User,Serializable> {
 
-	public abstract User findbyUsername(String username);
+	public abstract User findByUsername(String username);
 	
 }

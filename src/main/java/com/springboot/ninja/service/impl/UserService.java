@@ -13,7 +13,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import com.springboot.ninja.repository.service.impl.;
 
 import com.springboot.ninja.entity.UserRole;
 
@@ -29,13 +28,13 @@ public class UserService implements UserDetailsService{
 	
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		com.springboot.ninja.entity.User user =userRepository.findbyUsername(username);
+		com.springboot.ninja.entity.User user =userRepository.findByUsername(username);
 		List<GrantedAuthority> authorities = buildAuthorities(user.getUserRole());
 		return buildUser(user,authorities);
 	}
 	
 	private User buildUser(com.springboot.ninja.entity.User user,List<GrantedAuthority> authorities) {
-	return new User(user.getUsername(), user.getPassword(), user.isEnable(), true, true,true, authorities);		
+	return new User(user.getUsername(), user.getPassword(), user.isEnable(),true,true,true,authorities);		
 	}
 	
 	

@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.springboot.ninja.constant.ViewConstant;
 
 
+
 @Controller
 public class LoginController {
 
@@ -15,10 +16,10 @@ public class LoginController {
 	
 	
 	@GetMapping("/login")
-	public String showLoginFrom(Model model,
-			@RequestParam(name="error",defaultValue="",required=false) String error,
+	public String showLoginForm(Model model,
+			@RequestParam(name="error",required=false) String error,
 	        @RequestParam(name="logout",required=false)String logout){
-		LOG.info("METHOD:showLoginFrom() -- PARAM:error="+error+"logaut:"+logout);
+		LOG.info("METHOD:showLoginForm() -- PARAM:error="+error+"logaut:"+logout);
 		model.addAttribute("error",error);
 		model.addAttribute("logout",logout);
 
@@ -26,7 +27,7 @@ public class LoginController {
 		return ViewConstant.LOGIN;
 	}
 	
-	@GetMapping({"/logincheck","/"})
+	@GetMapping({"/loginsuccess","/" })
 	public String loginCheck() {
 		LOG.info("METHOD:loginCheck()");
 		LOG.info("Retornando los contactos de la vista");
