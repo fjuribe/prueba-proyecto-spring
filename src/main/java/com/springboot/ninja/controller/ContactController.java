@@ -4,6 +4,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -34,13 +35,13 @@ public class ContactController {
 		return "redirect:/contacts/showcontacts";
 	}
 	
-	
+	//@PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')")
 	@GetMapping("/contactform")
-	private String redirectContactFrom(@RequestParam(name="id",required=false)int id,
+	private String redirectContactForm(@RequestParam(name="id",required=false)int id,
 			Model model) {
 		
-		ContactModel contact = contactService.findContactByIdModel(id);
-		if(id==0) {
+		ContactModel contact = new ContactModel();
+		if(id!=0) {
 			contact = contactService.findContactByIdModel(id);
 		}
 		model.addAttribute("contactModel",contact);
