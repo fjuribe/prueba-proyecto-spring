@@ -13,11 +13,13 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-//import com.springboot.ninja.entity.User;
+
+
 import com.springboot.ninja.entity.UserRole;
 
 
 @Service("userService")
+
 public class UserService implements UserDetailsService{
 
 	@Autowired

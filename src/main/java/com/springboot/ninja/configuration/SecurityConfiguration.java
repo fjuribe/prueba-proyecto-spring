@@ -1,5 +1,4 @@
 package com.springboot.ninja.configuration;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Configuration;
@@ -19,7 +18,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 	private UserDetailsService userService;
 	
 	
-	@Autowired
+	//@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception{
 		auth.userDetailsService(userService).passwordEncoder(new BCryptPasswordEncoder());
 	}
@@ -28,7 +27,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
-		.antMatchers("/css/*","/img/*")
+		.antMatchers("/css/*","/imgs/*")
 		.permitAll()
 		.anyRequest()
 		.authenticated()

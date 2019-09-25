@@ -1,8 +1,6 @@
 package com.springboot.ninja.entity;
-
 import java.util.HashSet;
 import java.util.Set;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -28,12 +26,14 @@ public class User {
 	private Set<UserRole> userRole = new HashSet<UserRole>();
 
 	public User(String username, String password, boolean enable) {
+		super();
 		this.username = username;
 		this.password = password;
 		this.enable = enable;
 	}
 
 	public User(String username, String password, boolean enable, Set<UserRole> userRole) {
+		super();
 		this.username = username;
 		this.password = password;
 		this.enable = enable;
