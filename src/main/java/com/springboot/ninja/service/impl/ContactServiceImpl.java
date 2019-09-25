@@ -31,7 +31,7 @@ public class ContactServiceImpl implements ContactService{
 	}
 
 	@Override
-	public List<ContactModel> ListAllcontacts() {
+	public List<ContactModel> listAllcontacts() {
 		List<Contact> contacts=contactRepository.findAll();
 		List<ContactModel> contactsModel= new ArrayList<ContactModel>();
 		for(Contact contact:contacts) {

@@ -4,7 +4,9 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.security.access.prepost.PreAuthorize;
+//import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -64,8 +66,12 @@ public class ContactController {
 	
 	@GetMapping("/showcontacts")
 	public ModelAndView showContacts() {
+		
 		ModelAndView maw=new ModelAndView(ViewConstant.CONSTANTS);
-		maw.addObject("contacts",contactService.ListAllcontacts());
+		
+		 User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		maw.addObject("username",user.getUsername());
+		maw.addObject("contacts",contactService.listAllcontacts());
 		return maw;	
 	}
 	
